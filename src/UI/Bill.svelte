@@ -7,7 +7,7 @@
 	let formattedEnd = new Intl.DateTimeFormat('en-US').format(period.end);
 </script>
 
-<div>
+<!-- <div>
 	<header>
 		<h1>{name}</h1>
 		<h2>
@@ -15,4 +15,10 @@
 		</h2>
 		<h3>${amount}</h3>
 	</header>
-</div>
+</div> -->
+<tr>
+	<th scope="row">{name}</th>
+	<td>{formattedStart}</td>
+	<td>{formattedEnd}</td>
+	<td>{amount}</td>
+</tr>
