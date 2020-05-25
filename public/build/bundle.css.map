@@ -1,12 +1,8 @@
 {
   "version": 3,
   "file": "bundle.css",
-  "sources": [
-    "../../App.svelte"
-  ],
-  "sourcesContent": [
-    "<script>\n\timport Bill from './Bill.svelte';\n\timport Tenant from './Tenant.svelte';\n\timport { Col, Row } from 'sveltestrap';\n\t\n\tlet bills = [\n\t\t{\n\t\t\tname: 'Gas',\n\t\t\tperiod: {\n\t\t\t\tstart: new Date(2020, 0, 1),\n\t\t\t\tend: new Date(2020, 1, 1)\n\t\t\t},\n\t\t\tamount: 30,\n\t\t},\n\t\t\n\t\t{\n\t\t\tname: 'Water',\n\t\t\tperiod: {\n\t\t\t\tstart: new Date(2020, 3, 1),\n\t\t\t\tend: new Date(2020, 4, 1)\n\t\t\t},\n\t\t\tamount: 30,\n\t\t},\n\t];\n\t\n\tlet tenants = [\n\t\t{name: 'Eric'},\n\t\t{name: 'Person2'}\n\t];\n</script>\n\n<style>\n\t.parent {\n\t\t\tdisplay: flex;\n\t\t\talign-items: top;\n\t}\n\n\t.column {\n\t\tflex: 1\n\t}\n</style>\n\n<div class=\"parent\">\n\t<Col>\n\t\t{#each bills as bill}\n\t\t\t<Row><Bill {...bill} /></Row>\n\t\t{/each}\n\t</Col>\n\t<Col>\n\t\t{#each tenants as tenant}\n\t\t\t<Row>\n\t\t\t\t<Tenant {...tenant} />\n\t\t\t</Row>\n\t\t{/each}\n\t</Col>\n</div>\n\n"
-  ],
+  "sources": [],
+  "sourcesContent": [],
   "names": [],
-  "mappings": "AAgCC,OAAO,eAAC,CAAC,AACP,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,GAAG,AAClB,CAAC"
+  "mappings": ""
 }

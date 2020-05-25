@@ -339,9 +339,6 @@ var app = (function () {
         }
         return update;
     }
-    function get_spread_object(spread_props) {
-        return typeof spread_props === 'object' && spread_props !== null ? spread_props : {};
-    }
 
     function bind(component, name, callback) {
         const index = component.$$.props[name];
@@ -6937,44 +6934,70 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (17:3) {#each bills as bill}
+    // (21:3) {#each bills as bill}
     function create_each_block(ctx) {
-    	let current;
-    	const bill_spread_levels = [/*bill*/ ctx[1]];
-    	let bill_props = {};
-
-    	for (let i = 0; i < bill_spread_levels.length; i += 1) {
-    		bill_props = assign(bill_props, bill_spread_levels[i]);
-    	}
-
-    	const bill = new Bill({ props: bill_props, $$inline: true });
+    	let tr;
+    	let td0;
+    	let t0_value = /*bill*/ ctx[1].name + "";
+    	let t0;
+    	let t1;
+    	let td1;
+    	let t2_value = dateFormat(/*bill*/ ctx[1].start) + "";
+    	let t2;
+    	let t3;
+    	let td2;
+    	let t4_value = dateFormat(/*bill*/ ctx[1].end) + "";
+    	let t4;
+    	let t5;
+    	let td3;
+    	let t6_value = /*bill*/ ctx[1].amount + "";
+    	let t6;
+    	let t7;
 
     	const block = {
     		c: function create() {
-    			create_component(bill.$$.fragment);
+    			tr = element("tr");
+    			td0 = element("td");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			td1 = element("td");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			td2 = element("td");
+    			t4 = text(t4_value);
+    			t5 = space();
+    			td3 = element("td");
+    			t6 = text(t6_value);
+    			t7 = space();
+    			add_location(td0, file$e, 22, 5, 399);
+    			add_location(td1, file$e, 23, 5, 425);
+    			add_location(td2, file$e, 24, 5, 464);
+    			add_location(td3, file$e, 25, 5, 501);
+    			add_location(tr, file$e, 21, 4, 389);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(bill, target, anchor);
-    			current = true;
+    			insert_dev(target, tr, anchor);
+    			append_dev(tr, td0);
+    			append_dev(td0, t0);
+    			append_dev(tr, t1);
+    			append_dev(tr, td1);
+    			append_dev(td1, t2);
+    			append_dev(tr, t3);
+    			append_dev(tr, td2);
+    			append_dev(td2, t4);
+    			append_dev(tr, t5);
+    			append_dev(tr, td3);
+    			append_dev(td3, t6);
+    			append_dev(tr, t7);
     		},
     		p: function update(ctx, dirty) {
-    			const bill_changes = (dirty & /*bills*/ 1)
-    			? get_spread_update(bill_spread_levels, [get_spread_object(/*bill*/ ctx[1])])
-    			: {};
-
-    			bill.$set(bill_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(bill.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(bill.$$.fragment, local);
-    			current = false;
+    			if (dirty & /*bills*/ 1 && t0_value !== (t0_value = /*bill*/ ctx[1].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*bills*/ 1 && t2_value !== (t2_value = dateFormat(/*bill*/ ctx[1].start) + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*bills*/ 1 && t4_value !== (t4_value = dateFormat(/*bill*/ ctx[1].end) + "")) set_data_dev(t4, t4_value);
+    			if (dirty & /*bills*/ 1 && t6_value !== (t6_value = /*bill*/ ctx[1].amount + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
-    			destroy_component(bill, detaching);
+    			if (detaching) detach_dev(tr);
     		}
     	};
 
@@ -6982,14 +7005,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(17:3) {#each bills as bill}",
+    		source: "(21:3) {#each bills as bill}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (9:1) <Table striped>
+    // (13:1) <Table striped>
     function create_default_slot_1(ctx) {
     	let thead;
     	let th0;
@@ -7001,7 +7024,6 @@ var app = (function () {
     	let th3;
     	let t7;
     	let tbody;
-    	let current;
     	let each_value = /*bills*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -7009,10 +7031,6 @@ var app = (function () {
     	for (let i = 0; i < each_value.length; i += 1) {
     		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
-
-    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-    		each_blocks[i] = null;
-    	});
 
     	const block = {
     		c: function create() {
@@ -7035,12 +7053,12 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(th0, file$e, 10, 3, 175);
-    			add_location(th1, file$e, 11, 3, 192);
-    			add_location(th2, file$e, 12, 3, 215);
-    			add_location(th3, file$e, 13, 3, 236);
-    			add_location(thead, file$e, 9, 2, 164);
-    			add_location(tbody, file$e, 15, 2, 265);
+    			add_location(th0, file$e, 14, 3, 262);
+    			add_location(th1, file$e, 15, 3, 279);
+    			add_location(th2, file$e, 16, 3, 302);
+    			add_location(th3, file$e, 17, 3, 323);
+    			add_location(thead, file$e, 13, 2, 251);
+    			add_location(tbody, file$e, 19, 2, 352);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, thead, anchor);
@@ -7057,11 +7075,9 @@ var app = (function () {
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(tbody, null);
     			}
-
-    			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*bills*/ 1) {
+    			if (dirty & /*bills, dateFormat*/ 1) {
     				each_value = /*bills*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -7071,41 +7087,19 @@ var app = (function () {
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
-    						transition_in(each_blocks[i], 1);
     					} else {
     						each_blocks[i] = create_each_block(child_ctx);
     						each_blocks[i].c();
-    						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(tbody, null);
     					}
     				}
 
-    				group_outros();
-
-    				for (i = each_value.length; i < each_blocks.length; i += 1) {
-    					out(i);
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
     				}
 
-    				check_outros();
+    				each_blocks.length = each_value.length;
     			}
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-
-    			for (let i = 0; i < each_value.length; i += 1) {
-    				transition_in(each_blocks[i]);
-    			}
-
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			each_blocks = each_blocks.filter(Boolean);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				transition_out(each_blocks[i]);
-    			}
-
-    			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(thead);
@@ -7119,14 +7113,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(9:1) <Table striped>",
+    		source: "(13:1) <Table striped>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (8:0) <Container>
+    // (12:0) <Container>
     function create_default_slot(ctx) {
     	let current;
 
@@ -7174,7 +7168,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(8:0) <Container>",
+    		source: "(12:0) <Container>",
     		ctx
     	});
 
@@ -7237,6 +7231,10 @@ var app = (function () {
     	return block;
     }
 
+    function dateFormat(date) {
+    	return new Intl.DateTimeFormat("en-US").format(date);
+    }
+
     function instance$e($$self, $$props, $$invalidate) {
     	let { bills } = $$props;
     	const writable_props = ["bills"];
@@ -7252,7 +7250,13 @@ var app = (function () {
     		if ("bills" in $$props) $$invalidate(0, bills = $$props.bills);
     	};
 
-    	$$self.$capture_state = () => ({ Bill, Container, Table, bills });
+    	$$self.$capture_state = () => ({
+    		Bill,
+    		Container,
+    		Table,
+    		bills,
+    		dateFormat
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ("bills" in $$props) $$invalidate(0, bills = $$props.bills);

@@ -2,7 +2,11 @@
     import Bill from './Bill.svelte';
     import { Container, Table } from 'sveltestrap';
 
-    export let bills;
+	export let bills;
+	
+	function dateFormat(date) {
+		return new Intl.DateTimeFormat('en-US').format(date);
+	}
 </script>
 
 <Container>
@@ -15,7 +19,12 @@
 		</thead>
 		<tbody>
 			{#each bills as bill}
-				<Bill {...bill} />
+				<tr>
+					<td>{bill.name}</td>
+					<td>{dateFormat(bill.start)}</td>
+					<td>{dateFormat(bill.end)}</td>
+					<td>{bill.amount}</td>
+				</tr>
 			{/each}
 		</tbody>
 	</Table>
